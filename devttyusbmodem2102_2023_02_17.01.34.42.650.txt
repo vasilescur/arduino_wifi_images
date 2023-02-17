@@ -1,0 +1,20 @@
+Initializing camera...
+Scanning for I2C devices
+I2C device found at address 0x3C
+I2C device found at address 0x60
+Initializing SPI
+Resetting CPLD
+SPI interface ok.
+Checking camera module type
+ACK CMD OV5642 detected. END
+Initializing camera in RAW format
+Setting frame size
+Capturing frame.
+Starting capture
+..Capture done
+FIFO length: 
+-20472
+Sending frame...
+
+
+---- HALT ----

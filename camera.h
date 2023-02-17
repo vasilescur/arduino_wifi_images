@@ -2,10 +2,7 @@
 #define CAMERA
 #endif
 
-// Public:
-void init_camera();
+#include <ArduCAM.h>
 
-// Private:
-void test_i2c();
-void reg_write(uint8_t address, uint8_t value);
-uint8_t reg_read(uint8_t address);
+ArduCAM* init_camera();
+uint8_t* capture_frame(ArduCAM* myCAM, size_t* length);

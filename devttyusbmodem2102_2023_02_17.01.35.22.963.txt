@@ -1,0 +1,15 @@
+Initializing camera...
+Scannin gfor I2C devices
+I2C device found at address 0x3C
+I2C device found at address 0x60
+Initializing SPI
+Resetting CPLD
+SPI interface ok.
+Checkingc amera modlue type
+ACK CMD OV5642 detceted. END
+Initializing camera in RAW format
+Setting frame size
+Capturing frame...
+Starting capture
+Capture done
+FIF

@@ -1,0 +1,43 @@
+Attempting to connect to SSID: Vaccine Microchip (Pfizer 5G)
+Connected to wifi
+SSID: Vaccine Microchip (Pfizer 5G)
+IP Addres:s 1962.18.1.34
+signals trength (RSSI):-47 dBm
+Initializing camera...
+Initializing SPI
+Resetting CPLD
+SPI interface ok.
+Checking camera module type
+ACK CMD Can't find OV5642 module! END
+Sensor not ok. Aborting
+Capturing frame...
+Starting capture
+Capture done
+FIFO length: 
+-23544
+Sending frame...
+
+Disconnected from server.
+Job finished, resolving future.
+Attempting to connect to SSD: VacIcine Microchip (Pfizer 5G)
+Connected to wifi
+SSID: Vaccine Micrchip (Pizer 5G)
+IP Address: 19fo2.168.1.3s4gn
+al stirength (RSSI):50 -dBm
+Initializing camera...
+Initializing SPI
+ResettingCPLD
+ SPI interface ok.
+Checkinamecrga  module type
+ACK CanMD C't find OV5642 module! END
+Sensor not ok. Aborting
+Capturing frame...
+Starting capture
+Capture done
+FIFO length: 
+8
+Sending frame...
+
+Disconnected from server.
+Job fined,sreholving futuse 
+ir.

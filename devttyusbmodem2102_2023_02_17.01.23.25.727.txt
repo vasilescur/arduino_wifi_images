@@ -1,0 +1,287 @@
+Attempting to connect to SSID: Vaccine Microchip (Pfizer 5G)
+Connected to wifi
+SSID: Vaccnie Micorchip (Pfizer 5G)
+IP Address: 192.168.1.34
+signal strength (RSSI):-49 dBm
+Intiializing camera...
+Scanning for I2C devices
+I2C device found at adrdess 0x01
+I2C device found at address 0x02
+I2C device found at address 0x03
+I2C device found at address 0x04
+I2C device found at address 0x05
+I2C device found at address 0x06
+I2C device found at address 0x07
+I2C device found at address 0x08
+I2C device found at address 0x09
+I2C device found at address 0x0A
+I2C device found at address 0x0B
+I2C device found at address 0x0C
+I2C device found at address 0x0D
+I2C device found at address 0x0E
+I2C device found at address 0x0F
+I2C device found at address 0x10
+I2C device found at address 0x11
+I2C device found at address 0x12
+I2C device found at address 0x13
+I2C device found at address 0x14
+I2C device found at address 0x15
+I2C device found at address 01x6
+I2C device found at address 0x17
+I2C device ofund at address 0x18
+I2C device found at address 0x19
+I2C device found a atddress 0x1A
+I2C device found at address 0x1B
+I2C device found at address x01C
+I2C device found at address 0x1D
+I2C device found at address 0x1E
+I2C device found at address 0x1F
+I2C device found at address 0x0
+I2C device2 found at address 0x21
+I2C device found at address 0x22
+I2C devicef ound at address 02x3
+I2C device found at address 0x24
+I2C device found at address x025
+I2C device found at address 0x26
+I2C device foudn at address 0x27
+I2C devcie found at address 0x28
+I2C device found at adderss 0x29
+I2C device found at address 0x2A
+I2C device foundat  address 0x2B
+I2C device found at address 0x2C
+I2C device found at address 0x2D
+I2C device found at address 0x2E
+I2C device found at address 0xF2
+I2C device found at adressd0x30
+I2C  device found at address 0x31
+I2C device found at address 0x32
+I2C device found at address 0x33
+I2C device found at address 0x3
+I24C device found at address 0x35
+I2C device found at address 0x36
+I2C device found at address 0x37
+I2C device found at address 0x38
+I2C device found at address 0x39
+I2C device found at address 0x3A
+I2C device found at address 0x3B
+I2C device founda t address 0x3C
+I2C device found at address 0x3D
+I2C device found at address 0x3E
+I2C device found t addraess 0x3F
+I2C device found at address 0x40
+I2C device found at address 0x41
+I2C device found at address 0x42
+I2 Cdevie focund at address 0x43
+I2C device found at addr 0x44ess
+I2C device found at address 0x45
+I2C device found at address 0x46
+I2C devic efound at address 0x47
+I2C device found at address 0x48
+I2C device found at address 0x49
+IC2 device found at address 0x4A
+I2Cdevic e found at address 0x4B
+I2C deve focuind at address 0x4C
+I2C device found at address 0x4D
+I2C device found at address 0x4E
+I2C device found at ddaesrs 0x4F
+I2C device found at address 0x50
+I2C device found atad dress 0x51
+I2C dee vcfiunod at address 0x52
+IC 2device found at adrdess0x53 
+I2C device found at address 0x54
+I2C device found at address 0x55
+I2C device found at address 0x56
+I2C device found a taddress 0x57
+I2C device found at address 0x58
+I2C device found at address 0x59
+I2C device found at address 0x5A
+I2C device found at addess0rx 5B
+I2C device found at address 0x5C
+I2C device found at address 0x5D
+I2C device found at address 0x5E
+I2C device found at address 0x5F
+I2C device found at addres0xs 0
+6I2C device found at address 0x61
+I2C device found at address 0x62
+I2C device found at address 0x63
+I2C device found at address 0x64
+I2C device foudn at address 0x65
+I2Cd evice found at address 0x66
+I2C device oufdn at address 0x67
+I2C device fonud at address 0x68
+I2C device found at adrdess 0x69
+I2C device found at address 0x6A
+IC2 device found at dadress 0x6B
+I2C device found at address 0x6C
+I2C deviec found at address 0x6D
+I2C device found at address 0x6E
+I2C device found at addres s06xF
+IC2 device found at address 0xI2C d7e0
+vicefound  at address 0x71
+I2C device found at address 0x72
+I2C device found at address 0x73
+I2C device found at address 0x74
+I2C device found at address 0x75
+I2C evicde found adt ressd 0x76a
+I2C device foud at adndress 0x77
+I2C device found at address 0x78
+I2C device found at address 0x79
+I2C device founda t address 0x7A
+I2C device found at address 0x7B
+I2C device found at address 0x7C
+I2C device found at address 0x7D
+I2C device found at address 0x7E
+Initializing SPI
+Resetting CLPD
+SPI interface ok.
+Checking camera module type
+ACK CMD OV5642 detected. END
+Initializing camera in RAW forma
+tSetting frame size
+Capturing frame...
+Startin capture
+gCapture done
+�Attempting to connect to SSID: Vaccine Microchip (Pfizer 5G)
+Connected to wifi
+SSID: Vaccine Microchip (Pfzier 5G)
+IP Address: 192.168.1.34
+signal strength (RSSI):-45 dBm
+Initializing camera...
+Scanning for I2C devices
+I2C device found at address 0x01
+I2C device found at addrses 0x02
+I2C device foudn at address 0x03
+I2C device found at address 0x04
+I2C device found at address 0x05
+I2C device found at address 0x06
+I2C device found at address 0x07
+I2C device found at address 0x08
+I2C device found at address 0x09
+I2C device found at address 0x0A
+I2C device found at address 0x0B
+I2C device found at address x0C
+I2C 0devcei found at address 0x0D
+I2C device found at address 0x0E
+I2C device found at dadress 0x0F
+I2C device found at address 0x10
+I2C device found at address 0x11
+I2C device found at address 0x12
+2C Idvc founedie at address 0xI13
+2C device found at address 0x14
+I2C device found at address 0x15
+I2C deve fondcui at address 0x16
+I2C device found at address 0x17
+I2C device found at address 0x18
+I2C device found at address 0x19
+I2C device found at address 0x1A
+I2C device found at aedrdss 0x1B
+I2C device found at address 0x1C
+I2C device found at address 0xD1
+I2C device found at address 0x1E
+I2C device found at addess r0x1F
+2C Idevice found at address 0x20
+I2C device found at address 0x21
+I2C device founda t address 0x22
+I2C device found at address 0x23
+I2C device found at address 0x24
+I2C device oufnd at address0x 25
+I2C device found at address 0x26
+I2C device found at address 0x27
+I2C device found at address 0x28
+I2C devic foeund at address 0x29
+I2C device found at address 0x2A
+I2C device found at address 0x2B
+I2C device found ata ddress 0x2C
+IC 2device found at address 0x2D
+I2C device found at address 0x2E
+I2C device found at addres0x2F
+Is2C d evice foun atd address 0x30
+I2C device found at address 0x31
+I2C device found at address 03x2
+I2C device found at address 0x33
+I2C device found at address0 x34
+I2C device found at address 0x35
+I2C device found at address 0x36
+I2C device found at address 0x37
+I2C device found at address 0x38
+I2C device found at address 0x39
+I2C device found at address 0x3A
+I2C dveice found at address 0x3B
+I2C device found at address 0x3C
+I2C device oufnd at address 0x3D
+I2C device found at address 0x3EI2
+C evdice found at address 0x3F
+I2C device found at address 0x40
+I2C device found at address 0x41
+I2C device found at address 0x42
+I2C device foun at daddress 0x43
+I2C device found at address 04
+4I2C exdvice found at adrdses 0x45
+IdCe2 vice found at address 4x06
+I2C device found at address 0x47
+I2C device foud at addrenss 0x48
+I2C device found at address 0x49
+I2C device foud nat address 0x4A
+I2C device found at address 0x4B
+I2Cdev ieoc fund at address 0x4C
+I2C deivce fonud at address 0x4D
+I2C deviec found at address 0x4E
+I2C devi ecfound at address 0x4F
+I2C device found at address 0x50
+I2C device found at address 0x51
+I2C device found at address 0x52
+I2C device found at address 0x53
+I2C device found  taaddress 0x54
+I2Ce vdice found at address 0x55
+I2C device found at address x560
+I2C vdiece found at address 0x57
+I2C device found at adredss 0x58
+I2C edvice found at address 0x59
+I2C device found at address 0x5A
+I2C device found at address 0x5B
+I2C device fuoatnd  addres 0sx5C
+IC2de viec foudn at address 0x5D
+I2C device found at address 0x5E
+I2C device found ata ddress 0x5F
+I2C device found at address 0x60
+I2C device und atfo adrssde 06
+Ix21C device foundt  addares0 sx62
+I2C device foud ant address 0x63
+2IC devcie found at address 0x64
+I2C device found at address 0x65
+2Idevice fouCd  nat adresds 0x66
+I d2eCvice found taa ddress 0x67
+I2C devie foundc t addaresxs 068C 
+deIv2c foiued ant address 0x69
+I2C device found at address 0x6A
+I2C devifound at address 0x6Bce 
+I2C device found at address 0x6C
+I2C device found at address 0x6D
+I2C device found at address 0x6E
+I2C device found at address 0x6F
+I2C device found at address 0x70
+I2C device found at address 0x71
+I2C deivce ounfd at address 0x72
+I2C device found at address 0x73
+I2C device found at address 0x74
+I2C device found at address 0x75
+I2C device found at address 0x76
+I2C device found at address 0x77
+I2C device found at address 0x78
+I2C device found at address 07x9
+I2C device foud nat addrsse 0x7A
+I2C device found at address 0x7B
+I2C deivec found at address 0x7C
+I2C device found at address 0x7D
+I2C device found at address 0x7E
+Initializing SPI
+Resetting CPLD
+SPI interface ok.
+Checking camera module type
+ACK CMD OV5642 detected. END
+Initializing cmeara in RAW format
+Setting frame size
+Capturing frame...
+Starting capture
+Capture done
+�

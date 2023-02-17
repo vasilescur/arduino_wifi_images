@@ -2,59 +2,161 @@
 #include "camera.h"
 #endif
 
+#include <ArduCAM.h>
 #include <SPI.h>
 #include <Wire.h>
-#include <ArduCAM.h>
 
-const int SLAVE_SELECT_PIN = 7;
+// --- Constants & Macros ---
 
-void init_camera() {
+const int CS = 7;
+
+#define CAMERA_DEBUG
+
+#ifdef CAMERA_DEBUG
+#define DEBUG(x) Serial.println(x)
+#else
+#define DEBUG(x)
+#endif
+
+// --- Function prototypes ---
+
+bool test_spi(ArduCAM* myCAM);
+
+#ifdef CAMERA_DEBUG
+void test_i2c();
+bool test_sensor(ArduCAM *myCAM);
+#endif
+
+// --- Init ---
+
+ArduCAM* init_camera() {
+    #ifdef CAMERA_DEBUG
     test_i2c();
+    #endif;
 
-    ArduCAM myCAM(OV5642, SLAVE_SELECT_PIN);
+    ArduCAM* myCAM = new ArduCAM(OV5642, CS);
 
-
-    Serial.println("Setting the SLAVE_SELECT_PIN to HIGH");
-    pinMode(SLAVE_SELECT_PIN, OUTPUT);
-    // set the slave select pin high
-    digitalWrite(SLAVE_SELECT_PIN, HIGH);
-
-    SPI.setDataMode(0);
-    SPI.setBitOrder(MSBFIRST);
-    SPI.setClockDivider(SPI_CLOCK_DIV8);
+    // Init SPI
+    DEBUG(F("Initializing SPI"));
+    pinMode(CS, OUTPUT);
+    digitalWrite(CS, HIGH);
     SPI.begin();
 
-    delay(1000);
+    // Reset the CPLD
+    DEBUG(F("Resetting CPLD"));
+    myCAM->write_reg(0x07, 0x80);
+    delay(100);
+    myCAM->write_reg(0x07, 0x00);
+    delay(100);
 
-    // Write 1 to register 7 to reset to CPLD
-    Serial.println("Writing 0x80 to reg 0x07");
-    myCAM.write_reg(0x07, 0x80);
+    // Check the IC2 interface
+    #ifdef CAMERA_DEBUG
+    bool spi_ok = test_spi(myCAM);
+    if (!spi_ok) {
+        DEBUG(F("SPI interface error! Aborting"));
+        return NULL;
+    }
+    #endif
 
-    int seven = myCAM.read_reg(0x07);
-    Serial.println("Read 0x07: ");
+    // Check if the camera module type is OV5642
+    #ifdef CAMERA_DEBUG
+    bool sensor_ok = test_sensor(myCAM);
+    if (!sensor_ok) {
+        DEBUG(F("Sensor not ok. Aborting"));
+        return NULL;
+    }
+    #endif
 
+    // Change to JPEG capture mode and initialize the OV5642 module
+    DEBUG(F("Initializing camera in RAW format"));
+    myCAM->set_format(RAW);
+    myCAM->InitCAM();
 
-    delay(1000);
-    Serial.println("Writing 0x00 to reg 0x07");
-    myCAM.write_reg(0x07, 0x00);
-    delay(1000);
+    // Set the frame size
+    DEBUG(F("Setting frame size"));
+    myCAM->write_reg(ARDUCHIP_TIM, VSYNC_LEVEL_MASK);  // VSYNC is active HIGH
+    myCAM->OV5642_set_RAW_size(OV5642_320x240);
 
-    // Write to reg 0 and read it back
-    Serial.println("Writing 0x55 to reg 0x00");
-    myCAM.write_reg(0x00, 0x55);
-    delay(1000);
+    myCAM->clear_fifo_flag();
+    myCAM->write_reg(ARDUCHIP_FRAMES, 0x00);
 
-    Serial.println("Reading from reg 0x00");
-    uint8_t result = myCAM.read_reg(0x00);
-
-    Serial.println("Result: ");
-    Serial.println(result);
+    return myCAM;
 }
 
+// --- Utility Functions ---
+
+bool test_spi(ArduCAM* myCAM) {
+    myCAM->write_reg(ARDUCHIP_TEST1, 0x55);
+    uint8_t temp = myCAM->read_reg(ARDUCHIP_TEST1);
+    if (temp != 0x55) {
+        DEBUG(F("SPI interface error!"));
+        return false;
+    } else {
+        DEBUG(F("SPI interface ok."));
+        return true;
+    }
+}
+
+uint8_t* capture_frame(ArduCAM* myCAM, size_t* length) {
+    myCAM->flush_fifo();
+    myCAM->clear_fifo_flag();
+    myCAM->write_reg(ARDUCHIP_FRAMES, 0x00);
+
+    DEBUG(F("Starting capture"));
+    myCAM->start_capture();
+
+    while (!myCAM->get_bit(ARDUCHIP_TRIG, CAP_DONE_MASK)) {
+        delay(10);
+    }
+
+    DEBUG(F("Capture done"));
+    delay(50);
+
+    uint32_t fifo_length = myCAM->read_fifo_length();
+    DEBUG(F("FIFO length: "));
+    Serial.println(fifo_length);
+
+    // Serial.print(F("JPEGSTART"));
+
+    uint8_t* buf = (uint8_t*) malloc(fifo_length);
+
+    for (int i = 0; i < fifo_length; i++) { 
+        uint8_t data = myCAM->read_fifo();
+        // Serial.write(data);
+        buf[i] = data;
+
+        // #ifdef CAMERA_DEBUG
+        //     if (buf[i] < 0x10) {
+        //         Serial.print("0");
+        //     }
+        //     Serial.print(buf[i], HEX);
+        //     Serial.print(" ");
+        //     if (i % 16 == 15) Serial.println();
+        // #else
+        //     // Serial.write(buf[i]);
+        //     if (buf[i] < 0x10) {
+        //         Serial.print("0");
+        //     }
+        //     Serial.print(buf[i], HEX);
+        // #endif
+    }
+
+    // Serial.print(F("JPEGEND"));
+
+    // free(buf);
+    // Serial.println(F("$$$$$$$$$$"));
+
+    *length = fifo_length;
+    return buf;
+}
+
+// --- Debug Functions ---
+
+#ifdef CAMERA_DEBUG
 void test_i2c() {
     // Initialize I2C and then print out all the devices
     Wire.begin();
-    Serial.println("Scanning for I2C devices...");
+    Serial.println("Scanning for I2C devices");
 
     int nDevices = 0;
     for (byte address = 1; address < 127; address++) {
@@ -78,29 +180,24 @@ void test_i2c() {
         }
     }
 }
+#endif
 
+#ifdef CAMERA_DEBUG
+bool test_sensor(ArduCAM *myCAM) {
+    DEBUG(F("Checking camera module type"));
 
+    uint8_t vid, pid;
+    myCAM->wrSensorReg16_8(0xff, 0x01);
+    myCAM->rdSensorReg16_8(OV5642_CHIPID_HIGH, &vid);
+    myCAM->rdSensorReg16_8(OV5642_CHIPID_LOW, &pid);
 
-void reg_write(uint8_t address, uint8_t value) {
-    // take the SS pin low to select the chip:
-    digitalWrite(SLAVE_SELECT_PIN, LOW);
-    // delay(100);
-    //  send in the address and value via SPI:
-    SPI.transfer(address);
-    SPI.transfer(value);
-    // delay(100);
-    // take the SS pin high to de-select the chip:
-    digitalWrite(SLAVE_SELECT_PIN, HIGH);
+    if ((vid != 0x56) || (pid != 0x42)) {
+        DEBUG(F("ACK CMD Can't find OV5642 module! END"));
+        return false;
+    } else {
+        DEBUG(F("ACK CMD OV5642 detected. END"));
+        return true;
+    }
 }
+#endif
 
-uint8_t reg_read(uint8_t address) {
-    digitalWrite(SLAVE_SELECT_PIN, LOW);
-    // delay(100);
-
-    uint8_t result = SPI.transfer(0);
-    // delay(100);
-
-    digitalWrite(SLAVE_SELECT_PIN, HIGH);
-
-    return result;
-}

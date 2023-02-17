@@ -1,0 +1,16 @@
+Initializing camera...
+Initializing SPI
+Resetting CPLD
+SPI interface ok.
+Checkin gcamera module type
+ACK CMD Can't fin dOV5642 module! END
+Sensor not ok. Abortin
+gCapturing frame...
+Starting capture
+Capture done
+FIFO length: 
+8
+Sending frame...
+
+
+---- HALT ----
